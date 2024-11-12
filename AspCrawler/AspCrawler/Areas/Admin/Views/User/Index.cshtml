@@ -1,0 +1,67 @@
+﻿@model IEnumerable<AspCrawler.Areas.Admin.Models.Dto.UserListDto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout="~/Views/Shared/_LayoutAdmin.cshtml";
+}
+ 
+<h1>Index</h1>
+
+<p>
+    @Html.ActionLink("Create user", "Create", "User", new { area = "Admin" })
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmailConfirmed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AccessFailedCount)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Lname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Username)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmailConfirmed)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AccessFailedCount)
+                </td>
+                <td>
+                    <a href="@Url.Action("Edit", "User", new {id=item.Id,Area = "Admin"})" class="btn btn-primary">Edit</a> |
+                    @Html.ActionLink("Details", "Details","User", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", "User", new {  area = "Admin", id = item.Id })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
