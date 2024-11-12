@@ -1,0 +1,7 @@
+This project is written in .NET version 8.
+--------------------------------------------------------------------------
+To run the project, follow these steps:
+
+1.  Update the database.(in terminal or package console manager)
+2.  Register one or two new users.(with browser)
+3.  Navigate to the admin panel.(with browser)
