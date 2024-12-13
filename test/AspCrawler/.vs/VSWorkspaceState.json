@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\AspCrawler",
+    "\\AspCrawler\\Models",
+    "\\AspCrawler\\Views",
+    "\\AspCrawler\\Views\\Home",
+    "\\AspCrawler\\Views\\Shared",
+    "\\AspCrawler\\wwwroot",
+    "\\AspCrawler\\wwwroot\\css"
+  ],
+  "SelectedNode": "\\AspCrawler\\Models\\pr_digi.cs",
+  "PreviewInSolutionExplorer": false
+}
