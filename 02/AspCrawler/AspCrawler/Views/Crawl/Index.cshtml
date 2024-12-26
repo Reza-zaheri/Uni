@@ -1,0 +1,44 @@
+﻿@{
+    ViewData["Title"] = "Crawl Execution";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success">
+                <text>@TempData["SuccessMessage"]</text>
+            </div>
+        }
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-danger">
+                <text>@TempData["ErrorMessage"]</text>
+            </div>
+        }
+
+        <form asp-action="ExecuteFile" method="post">
+            <div class="form-group">
+                <label for="startTime">Start Time (HH:MM:SS)</label>
+                <input type="text" name="startTime" class="form-control" placeholder="HH:MM:SS" required />
+            </div>
+            <div class="form-group">
+                <label for="endTime">End Time (HH:MM:SS)</label>
+                <input type="text" name="endTime" class="form-control" placeholder="HH:MM:SS" required />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Execute" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

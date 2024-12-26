@@ -1,0 +1,16 @@
+﻿@model AspCrawler.Models.Category
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<h2>Delete Category</h2>
+<p>Are you sure you want to delete this category?</p>
+<ul>
+    <li>Title: @Model.Title</li>
+    <li>Description: @Model.Description</li>
+</ul>
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" id="Id" name="Id" value="@Model.Id" />
+    <button type="submit">Delete</button>
+</form>
+<a href="/Categories">Back to List</a>
