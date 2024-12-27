@@ -1,44 +1,17 @@
 ﻿@{
-    ViewData["Title"] = "Crawl Execution";
+    ViewData["Title"] = "Run Program";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h1>@ViewData["Title"]</h1>
+<h1>Run External Program</h1>
 
-<hr />
-<div class="row">
-    <div class="col-md-6">
-        @if (TempData["SuccessMessage"] != null)
-        {
-            <div class="alert alert-success">
-                <text>@TempData["SuccessMessage"]</text>
-            </div>
-        }
-        @if (TempData["ErrorMessage"] != null)
-        {
-            <div class="alert alert-danger">
-                <text>@TempData["ErrorMessage"]</text>
-            </div>
-        }
-
-        <form asp-action="ExecuteFile" method="post">
-            <div class="form-group">
-                <label for="startTime">Start Time (HH:MM:SS)</label>
-                <input type="text" name="startTime" class="form-control" placeholder="HH:MM:SS" required />
-            </div>
-            <div class="form-group">
-                <label for="endTime">End Time (HH:MM:SS)</label>
-                <input type="text" name="endTime" class="form-control" placeholder="HH:MM:SS" required />
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Execute" class="btn btn-primary" />
-            </div>
-        </form>
+@if (TempData["Message"] != null)
+{
+    <div style="color: green; margin-bottom: 10px;">
+        @TempData["Message"]
     </div>
-</div>
-
-@section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
 }
+
+<form asp-action="RunProgram" asp-controller="Crawl" method="post">
+    <button type="submit" class="btn btn-primary">Run Program</button>
+</form>
