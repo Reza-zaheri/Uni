@@ -1,0 +1,23 @@
+﻿@{
+    ViewData["Title"] = "Run Program";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>Run External Program</h1>
+
+@if (TempData["Message"] != null)
+{
+    <div style="color: green; margin-bottom: 10px;">
+        @TempData["Message"]
+    </div>
+}
+
+<form asp-action="RunProgram" asp-controller="Crawl" method="post">
+    <label for="startTime">Start Time:</label>
+    <input type="datetime-local" id="startTime" name="startTime" required />
+
+    <label for="endTime">End Time:</label>
+    <input type="datetime-local" id="endTime" name="endTime" required />
+
+    <button type="submit" class="btn btn-primary">Run Program</button>
+</form>

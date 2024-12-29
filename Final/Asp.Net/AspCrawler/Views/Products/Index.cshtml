@@ -1,0 +1,37 @@
+﻿@{
+    var products = Model as IEnumerable<dynamic>;
+}
+@{
+    ViewData["Title"] = "index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<h2>Product List</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Category</th>
+            <th>DateTime</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td>@product.Id</td>
+                <td>@product.Name</td>
+                <td>@product.Price</td>
+                <td>@product.Category</td>
+                <td>@product.DateTime</td>
+                <td>
+                    <a href="/Products/Edit/@product.Id" class="btn btn-warning btn-sm">Edit</a> |
+                    <a href="/Products/Delete/@product.Id" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="/Products/Create">Add New Product</a>

@@ -1,0 +1,45 @@
+﻿@model IEnumerable<AspCrawler.Models.Dto.UserListDto>
+
+@{
+    ViewData["Title"] = "UserInRole";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>User In Role</h1>
+ 
+<table class="table">
+    <thead>
+        <tr>
+         
+            <th>
+                @Html.DisplayNameFor(model => model.Fname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Username)
+            </th>
+ 
+        
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+     
+            <td>
+                @Html.DisplayFor(modelItem => item.Fname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Username)
+            </td>
+ 
+             
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,37 @@
+﻿@model List<AspCrawler.Models.Dto.ProductCategoryViewModel>
+@{
+    ViewData["Title"] = "Home Page";
+}
+@foreach (var category in Model)
+{
+    <div class="card mb-4" style="direction: rtl;">
+        <div class="card-header bg-primary text-white text-end">
+            <h5>@category.CategoryTitle</h5>
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered">
+                <thead class="text-end">
+                    <tr class="text-dark">
+                        <th scope="col">نام محصول</th>
+                        <th scope="col">قیمت</th>
+                        <th scope="col">تاریخ</th>
+                        <th scope="col">عملیات</th>
+                    </tr>
+                </thead>
+                <tbody class="text-end">
+                    @foreach (var product in category.Products)
+                    {
+                        <tr>
+                            <td>@product.Name</td>
+                            <td>@product.Price ریال</td>
+                            <td>@product.DateTime?.ToString("HH:mm -- yyyy-MM-dd")</td>
+                            <td>
+                                <a class="btn btn-sm btn-primary" href="@Url.Action("Details", "Home", new { id = product.Id })">جزئیات</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}

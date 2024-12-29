@@ -1,0 +1,88 @@
+﻿@model AspCrawler.Models.Dto.ProductDetailsViewModel
+@{
+    ViewData["Title"] = "Product Detail";
+}
+
+<div class="container mt-4" style="direction: rtl;">
+    <div class="card">
+        <div class="card-header bg-primary text-white text-end">
+            <h3>@Model.Product.Name</h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-4">
+                    @if (!string.IsNullOrEmpty(Model.Product.Pic_url))
+                    {
+                        <img src="@Model.Product.Pic_url" alt="@Model.Product.Name" class="img-fluid rounded">
+                    }
+                    else
+                    {
+                        <img src="/images/no-image.png" alt="No Image" class="img-fluid rounded">
+                    }
+                </div>
+                <div class="col-md-8">
+                    <table class="table table-bordered text-end">
+                        <tr>
+                            <th>دسته‌بندی</th>
+                            <td>@Model.CategoryTitle</td>
+                        </tr>
+                        <tr>
+                            <th>قیمت</th>
+                            <td>@Model.Product.Price</td>
+                        </tr>
+                        <tr>
+                            <th>واحد پولی</th>
+                            <td>@Model.Product.unit_p</td>
+                        </tr>
+                        <tr>
+                            <th>واحد حجمی</th>
+                            <td>@Model.Product.unit_s</td>
+                        </tr>
+                        <tr>
+                            <th>کشور</th>
+                            <td>@Model.Product.Country</td>
+                        </tr>
+                        <tr>
+                            <th>تاریخ</th>
+                            <td>@Model.Product.DateTime?.ToString("HH:mm -- yyyy-MM-dd")</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <hr>
+            <!-- جدول تغییرات -->
+            <h5 class="text-end">تغییرات قیمت محصول</h5>
+            <table class="table table-hover table-bordered">
+                <thead class="text-end">
+                    <tr>
+                        <th>ردیف</th>
+                        <th>قیمت</th>
+                        <th>زمان تغییر</th>
+                    </tr>
+                </thead>
+                <tbody class="text-end">
+                    @if (Model.EnrollChanges != null && Model.EnrollChanges.Any())
+                    {
+                        int index = 1;
+                        foreach (var change in Model.EnrollChanges)
+                        {
+                            <tr>
+                                <td>@index</td>
+                                <td>@change.Price</td>
+                                <td>@change.Time.ToString("HH:mm -- yyyy-MM-dd")</td>
+                            </tr>
+                            index++;
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="3" class="text-center">هیچ تغییری ثبت نشده است</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

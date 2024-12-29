@@ -1,0 +1,35 @@
+﻿@model IEnumerable<AspCrawler.Models.Category>
+
+@{
+    ViewData["Title"] = "index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>Categories</h1>
+
+<p>
+    <a href="@Url.Action("Create", "Category")" class="btn btn-primary">Add New Category</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Category Title</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Title</td>
+                <td>@item.Description</td>
+                <td>
+                    <a href="@Url.Action("Edit", "Category", new { id = item.Id })" class="btn btn-warning btn-sm">Edit</a> |
+                    <a href="@Url.Action("Delete", "Category", new { id = item.Id })" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
